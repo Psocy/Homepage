@@ -2,12 +2,12 @@
 const ASSETS_DATA = [
   {
     id: "toon-shaders",
-    title: "PooHoo Stylized Toon Shaders",
+    title: "Swem Stylized Toon Shaders",
     category: "shaders",
     badgeClass: "badge-shaders",
     categoryLabel: "Shaders",
     shortDesc: "A complete collection of high-fidelity toon shaders including dynamic stylized water, custom outline post-processing, and multi-band cel shaders for Unity URP.",
-    fullDesc: "Bring your anime or stylized game to life with PooHoo Stylized Toon Shaders! This package offers highly optimized, production-ready shaders designed specifically for modern mobile and console hardware. Includes customizable parameters for specular highlights, shadow bands, rim lighting, and a depth-based stylized water shader with procedural foam.",
+    fullDesc: "Bring your anime or stylized game to life with Swem Stylized Toon Shaders! This package offers highly optimized, production-ready shaders designed specifically for modern mobile and console hardware. Includes customizable parameters for specular highlights, shadow bands, rim lighting, and a depth-based stylized water shader with procedural foam.",
     price: "$29.99",
     platforms: ["Unity URP", "Unity HDRP"],
     features: [
