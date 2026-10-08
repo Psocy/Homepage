@@ -1,76 +1,21 @@
 // In-house Tech
 const ASSETS_DATA = [
   {
-    id: "toon-shaders",
-    title: "Swem Stylized Toon Shaders",
-    category: "shaders",
-    badgeClass: "badge-shaders",
-    categoryLabel: "Shaders",
-    shortDesc: "A complete collection of high-fidelity toon shaders including dynamic stylized water, custom outline post-processing, and multi-band cel shaders for Unity URP.",
-    fullDesc: "Our stylized rendering stack, built for the look of our own games. Optimized, production-ready shaders tuned for mobile and PC hardware, with customizable specular highlights, shadow bands, rim lighting, and a depth-based stylized water shader with procedural foam.",
-    platforms: ["Unity URP", "Unity HDRP"],
-    features: [
-      "Dynamic procedural cel shading",
-      "Depth-based toon water with custom foam lines",
-      "Stretched outline shaders (vertex extrusion & post-process)",
-      "Interactive wind-blown grass and foliage shaders",
-      "Optimized for mobile, PC, and consoles",
-      "Demo scene and presets for fast iteration"
-    ],
-    svgGraphic: `
-      <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="190" fill="#0b0e14"/>
-        <defs>
-          <linearGradient id="shGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
-          </linearGradient>
-          <linearGradient id="sphereGrad" x1="30%" y1="30%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#22d3ee"/>
-            <stop offset="40%" stop-color="#0891b2"/>
-            <stop offset="41%" stop-color="#0e7490"/>
-            <stop offset="80%" stop-color="#155e75"/>
-            <stop offset="81%" stop-color="#083344"/>
-          </linearGradient>
-        </defs>
-        <rect width="400" height="190" fill="url(#shGrad)"/>
-        <!-- Background Grid -->
-        <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-          <path d="M0 30 H400 M0 60 H400 M0 90 H400 M0 120 H400 M0 150 H400"/>
-          <path d="M50 0 V190 M100 0 V190 M150 0 V190 M200 0 V190 M250 0 V190 M300 0 V190 M350 0 V190"/>
-        </g>
-        <!-- Stylized Toon Water Waves -->
-        <path d="M 0 160 Q 50 140 100 160 T 200 160 T 300 160 T 400 160 L 400 190 L 0 190 Z" fill="#0891b2" fill-opacity="0.5"/>
-        <path d="M 0 170 Q 60 155 120 170 T 240 170 T 360 170 T 400 170 L 400 190 L 0 190 Z" fill="#0e7490" fill-opacity="0.8"/>
-        <!-- Cel Shaded Sphere -->
-        <circle cx="200" cy="85" r="45" fill="url(#sphereGrad)" stroke="#22d3ee" stroke-width="3" filter="drop-shadow(0 0 12px rgba(6, 182, 212, 0.4))"/>
-        <!-- Rim Light effect overlay -->
-        <path d="M 160 65 A 45 45 0 0 1 235 55 A 41 41 0 0 0 160 65" fill="#ffffff" fill-opacity="0.35"/>
-        <circle cx="180" cy="65" r="6" fill="#ffffff" fill-opacity="0.7"/>
-        <!-- Code / Math symbols representation -->
-        <text x="30" y="50" fill="#22d3ee" fill-opacity="0.4" font-family="monospace" font-size="11">half4 toon_spec = ...</text>
-        <text x="30" y="70" fill="#22d3ee" fill-opacity="0.4" font-family="monospace" font-size="11">o.normal = v.normal</text>
-        <text x="290" y="110" fill="#22d3ee" fill-opacity="0.3" font-family="monospace" font-size="10">float shadow = NdotL</text>
-        <text x="290" y="130" fill="#22d3ee" fill-opacity="0.3" font-family="monospace" font-size="10">col * shadow_band</text>
-      </svg>
-    `
-  },
-  {
-    id: "ai-behavior",
-    title: "Smart AI Behavior Tree Editor",
+    id: "regression-bots",
+    title: "Regression Bot Suite",
     category: "tools",
     badgeClass: "badge-tools",
-    categoryLabel: "Editor Tools",
-    shortDesc: "An advanced, node-based visual AI script editor. Easily build complex NPC decisions, state transitions, and behaviors without writing code.",
-    fullDesc: "The node-based editor our designers use to author NPC behavior. A drag-and-drop workspace with visual execution debugging, custom actions and conditional nodes, integrated with NavMesh and A* Pathfinding. It is also the foundation for our Claude-powered NPC R&D: designers define the behavior tree, and Claude handles dialogue inside those boundaries.",
-    platforms: ["Unity Editor", "C# API", "JSON export"],
+    categoryLabel: "QA Tools",
+    shortDesc: "50+ headless Godot bots that play RuinBound after every change: combat, co-op, HUD, levels and bosses.",
+    fullDesc: "Our automated playtesters. Each bot boots the game headless and drives one slice of it: fighting, dashing, hacking, walking every floor layout, checking doors and props, or hosting and joining a real co-op session over the network. A Python runner launches them in parallel on any OS, and screenshot bots compare frames to catch visual regressions. We built the suite with Claude Code, and it is what lets us refactor a 3D co-op game safely.",
+    platforms: ["Godot 4", "GDScript", "Python"],
     features: [
-      "Infinite canvas with panning and zooming controls",
-      "Live execution highlighting (watch NPC decisions in playmode)",
-      "Dozens of built-in nodes: Selector, Sequence, Parallel, Inverter, Cooldown",
-      "Seamless C# API to write custom Actions and Conditions",
-      "Blackboard system for state and global variable sharing",
-      "Export trees to JSON or binary scriptable assets"
+      "50+ focused bots (fight, dash, hack, HUD, map, boss…)",
+      "Host + client co-op bots over real networking",
+      "Screenshot bots with frame comparison",
+      "Cross-platform Python runner",
+      "Runs headless in CI-style batches",
+      "Shared bot base for writing new checks fast"
     ],
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,37 +38,38 @@ const ASSETS_DATA = [
         <path d="M 200 40 L 200 70 M 200 70 L 290 70 L 290 95" stroke="#ec4899" stroke-width="2" filter="drop-shadow(0 0 5px rgba(236, 72, 153, 0.6))"/>
         <!-- Root Node -->
         <rect x="155" y="20" width="90" height="24" rx="4" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
-        <text x="200" y="36" fill="#f3f4f6" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">ROOT (Selector)</text>
+        <text x="200" y="36" fill="#f3f4f6" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">run.py</text>
         <!-- Action Node Left -->
         <rect x="65" y="95" width="90" height="30" rx="4" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
-        <text x="110" y="114" fill="#e2e8f0" font-family="sans-serif" font-size="9" text-anchor="middle">Sequence: Chase</text>
+        <text x="110" y="114" fill="#e2e8f0" font-family="sans-serif" font-size="9" text-anchor="middle">net_bot (co-op)</text>
         <!-- Action Node Right (Active Node) -->
         <rect x="245" y="95" width="90" height="30" rx="4" fill="#1e1b4b" stroke="#ec4899" stroke-width="1.5" filter="drop-shadow(0 0 10px rgba(236, 72, 153, 0.3))"/>
-        <text x="290" y="114" fill="#ffffff" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">Action: Attack</text>
+        <text x="290" y="114" fill="#ffffff" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">fight_bot</text>
         <!-- Child Nodes -->
         <rect x="25" y="160" width="70" height="20" rx="3" fill="#020617" stroke="#475569" stroke-width="1"/>
-        <text x="60" y="173" fill="#94a3b8" font-family="sans-serif" font-size="8" text-anchor="middle">IsPlayerNear?</text>
+        <text x="60" y="173" fill="#94a3b8" font-family="sans-serif" font-size="8" text-anchor="middle">host</text>
         <rect x="125" y="160" width="70" height="20" rx="3" fill="#020617" stroke="#475569" stroke-width="1"/>
-        <text x="160" y="173" fill="#94a3b8" font-family="sans-serif" font-size="8" text-anchor="middle">MoveToPlayer</text>
+        <text x="160" y="173" fill="#94a3b8" font-family="sans-serif" font-size="8" text-anchor="middle">client</text>
       </svg>
     `
   },
+
   {
-    id: "dungeon-kit",
-    title: "Retro Dungeon Modular Kit",
+    id: "art-pipeline",
+    title: "Procedural Boss & Prop Builder",
     category: "3d",
     badgeClass: "badge-3d",
-    categoryLabel: "3D Assets",
-    shortDesc: "A complete kit of low-poly modular dungeon building blocks. Includes high-quality styled meshes, pre-configured collisions, and interactive objects.",
-    fullDesc: "A grid-aligned modular kit we use to block out and build dungeon levels in minutes: wall tiles, arches, columns, steps, floor layouts, interactive chests and lit torch particle systems.",
-    platforms: ["Unity Prefabs", "FBX"],
+    categoryLabel: "Art Pipeline",
+    shortDesc: "Blender Python scripts that assemble RuinBound's bosses, enemies and deck props from reusable parts.",
+    fullDesc: "Instead of modeling every asset by hand, we describe them in code. Blender Python scripts assemble multi-part bosses like the Cargo Strider and the Breacher, enemies like the Hound and the Sentry, and kits of deck props, then bake and export them straight into Godot. Companion scripts generate floor, surface and UI textures, and the RuinBound logo itself.",
+    platforms: ["Blender Python", "Godot 4"],
     features: [
-      "120+ unique low-poly modular models",
-      "Stylized hand-painted custom texturing",
-      "Fully optimized vertex budgets (averaging 300 polys per object)",
-      "PBR shader setup (Albedo, Metallic/Smoothness, Normal, Emissive)",
-      "Interactive components: chests, opening doors, trap triggers",
-      "Fully configured collider boundaries for instant placement"
+      "Bosses and enemies built from part libraries",
+      "Modular deck prop and sci-fi kit builders",
+      "Bake and export straight into Godot",
+      "Procedural floor, surface and UI textures",
+      "Bounds data exported for level placement",
+      "One-command rebuild scripts per asset"
     ],
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -163,22 +109,23 @@ const ASSETS_DATA = [
       </svg>
     `
   },
+
   {
-    id: "cyberpunk-audio",
-    title: "Cyberpunk City Soundscape SFX",
+    id: "music-engine",
+    title: "Code-to-Music Engine",
     category: "audio",
     badgeClass: "badge-audio",
-    categoryLabel: "Audio Packs",
-    shortDesc: "An immersive, high-quality audio asset package for futuristic games. Includes atmospheric street loops, interface chimes, neon drones, and ambient SFX.",
-    fullDesc: "Our ambient audio library for futuristic settings: WAV loops and hits for city ambience, hacking interfaces, flying vehicles, neon street noise and analog synth pads, pre-wired into Unity Audio Mixers.",
-    platforms: ["WAV 24-bit/48kHz", "Unity"],
+    categoryLabel: "Audio",
+    shortDesc: "Glitch artcore composed, synthesized, mixed and mastered entirely in Python, with DAW-ready exports.",
+    fullDesc: "A Python music engine for writing tracks as code: a note-notation parser, synths for growl, wobble and reese basses, glitch processors (stutters, tape stops, buffer shuffles, bitcrush), a mixer and a mastering chain. Every track exports as a master plus stems, MIDI and a ready-to-open Reaper project, so it can be finished in any DAW.",
+    platforms: ["Python", "FluidSynth", "Reaper / Ableton"],
     features: [
-      "80+ total sound files in high fidelity WAV format",
-      "Seamless ambient loops (averaging 1-minute loop duration)",
-      "Mixed and mastered for in-game use",
-      "Pre-configured Unity Audio Mixers and Sound Cue templates",
-      "Includes mechanical clicks, electronic HUD sweeps, warning buzzers",
-      "Optimized file compression options for mobile platforms"
+      "Note notation to MIDI and audio",
+      "FM growl, wobble and reese bass synths",
+      "Bus-wide glitch event processing",
+      "Stems, MIDI and .rpp project export",
+      "Mastered to streaming loudness",
+      "Full re-render with one command"
     ],
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -222,7 +169,63 @@ const ASSETS_DATA = [
         <circle cx="200" cy="95" r="25" stroke="#ec4899" stroke-width="2" stroke-opacity="0.5"/>
         <circle cx="200" cy="95" r="15" fill="#8b5cf6" filter="drop-shadow(0 0 10px rgba(139,92,246,0.8))"/>
         <!-- Stereo indicator -->
-        <text x="200" y="155" fill="#f43f5e" fill-opacity="0.5" font-family="monospace" font-size="9" text-anchor="middle">24-BIT STEREO / 48kHz WAV</text>
+        <text x="200" y="155" fill="#f43f5e" fill-opacity="0.5" font-family="monospace" font-size="9" text-anchor="middle">KERNEL PANIC / 180 BPM</text>
+      </svg>
+    `
+  },
+
+  {
+    id: "bga",
+    title: "Audio-Reactive 3D Visuals",
+    category: "shaders",
+    badgeClass: "badge-shaders",
+    categoryLabel: "Visuals",
+    shortDesc: "A single 3D object that morphs to a synth line in real time, built with three.js and audio analysis.",
+    fullDesc: "An experiment in music-driven visuals. We split a track into harmonic and percussive parts, extract synth features at 60 fps, and map them onto one continuously morphing 3D form: low growls swell the body, formants ripple the surface, high harmonics grow glowing spikes, and synth stabs briefly freeze it into crystal. It plays live in the browser and renders to video with a headless browser.",
+    platforms: ["three.js", "librosa", "Playwright"],
+    features: [
+      "Harmonic/percussive separation to ignore drums",
+      "Synth features sampled at 60 fps",
+      "Body, ripple, spike and crystal deformations",
+      "Pitch drives wave count and color",
+      "Real-time playback in the browser",
+      "Frame-accurate video render pipeline"
+    ],
+    svgGraphic: `
+      <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="190" fill="#0b0e14"/>
+        <defs>
+          <linearGradient id="shGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
+          </linearGradient>
+          <linearGradient id="sphereGrad" x1="30%" y1="30%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22d3ee"/>
+            <stop offset="40%" stop-color="#0891b2"/>
+            <stop offset="41%" stop-color="#0e7490"/>
+            <stop offset="80%" stop-color="#155e75"/>
+            <stop offset="81%" stop-color="#083344"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="190" fill="url(#shGrad)"/>
+        <!-- Background Grid -->
+        <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+          <path d="M0 30 H400 M0 60 H400 M0 90 H400 M0 120 H400 M0 150 H400"/>
+          <path d="M50 0 V190 M100 0 V190 M150 0 V190 M200 0 V190 M250 0 V190 M300 0 V190 M350 0 V190"/>
+        </g>
+        <!-- Stylized Toon Water Waves -->
+        <path d="M 0 160 Q 50 140 100 160 T 200 160 T 300 160 T 400 160 L 400 190 L 0 190 Z" fill="#0891b2" fill-opacity="0.5"/>
+        <path d="M 0 170 Q 60 155 120 170 T 240 170 T 360 170 T 400 170 L 400 190 L 0 190 Z" fill="#0e7490" fill-opacity="0.8"/>
+        <!-- Cel Shaded Sphere -->
+        <circle cx="200" cy="85" r="45" fill="url(#sphereGrad)" stroke="#22d3ee" stroke-width="3" filter="drop-shadow(0 0 12px rgba(6, 182, 212, 0.4))"/>
+        <!-- Rim Light effect overlay -->
+        <path d="M 160 65 A 45 45 0 0 1 235 55 A 41 41 0 0 0 160 65" fill="#ffffff" fill-opacity="0.35"/>
+        <circle cx="180" cy="65" r="6" fill="#ffffff" fill-opacity="0.7"/>
+        <!-- Code / Math symbols representation -->
+        <text x="30" y="50" fill="#22d3ee" fill-opacity="0.4" font-family="monospace" font-size="11">body = 40-250Hz</text>
+        <text x="30" y="70" fill="#22d3ee" fill-opacity="0.4" font-family="monospace" font-size="11">edge = 1.5-6kHz</text>
+        <text x="290" y="110" fill="#22d3ee" fill-opacity="0.3" font-family="monospace" font-size="10">stab: crystal</text>
+        <text x="290" y="130" fill="#22d3ee" fill-opacity="0.3" font-family="monospace" font-size="10">pitch: hue</text>
       </svg>
     `
   }
