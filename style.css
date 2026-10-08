@@ -644,47 +644,48 @@ header {
   margin-bottom: 18px;
 }
 
-.roadmap {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.roadmap li {
-  display: flex;
-  gap: 16px;
+/* Game */
+.game-card {
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
-  border-radius: 14px;
-  padding: 18px 20px;
-}
-
-.roadmap li.active {
-  border-color: rgba(139, 92, 246, 0.45);
+  border-radius: 20px;
+  overflow: hidden;
   box-shadow: var(--shadow-glow);
 }
 
-.roadmap-step {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  padding-top: 2px;
+.game-key {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--border-glass);
 }
 
-.roadmap li.done .roadmap-step { color: var(--accent-green); }
-.roadmap li.active .roadmap-step { color: #c084fc; }
-
-.roadmap h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 4px;
+.game-body {
+  padding: 32px;
 }
 
-.roadmap p {
+.game-body .status-tag {
+  display: inline-block;
+}
+
+.game-facts {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.game-facts li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.95rem;
+}
+
+.game-facts i {
+  width: 20px;
+  text-align: center;
+  color: #22d3ee;
 }
 
 /* Claude Feature Cards */
@@ -823,6 +824,9 @@ header {
   }
   .contact-card {
     padding: 40px 20px;
+  }
+  .game-body {
+    padding: 24px 20px;
   }
 }
 
