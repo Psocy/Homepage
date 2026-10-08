@@ -1,21 +1,77 @@
 // In-house Tech
 const ASSETS_DATA = [
   {
+    id: "megastructure",
+    title: "Megastructure Generator",
+    category: "3d",
+    badgeClass: "badge-shaders",
+    categoryLabel: "World Gen",
+    shortDesc: "Seeded chunk generator for an endless, 13-level megastructure, with every chunk proven walkable before it loads.",
+    fullDesc: "The heart of RuinBound. Each chunk is generated from the world seed and its coordinates on a worker thread: a graph of shafts, halls and corridors first, then stairs, ladders and airlocks to its neighbours. A pathfinding validator built on the player's real movement numbers (jump height, ledges, ladders, safe falls) checks that every part is reachable and repairs it if not. Regions, interior themes and macro features like canyons, megashafts and hanging cities are layered on top, and a floating origin keeps precision as players travel for kilometres.",
+    platforms: ["Godot 4", "GDScript", "Worker threads"],
+    features: [
+      "Endless horizontally, 13 levels vertically",
+      "Chunks built on worker threads, freed when left behind",
+      "Reachability validator with automatic repair",
+      "Canyon networks, megashafts, hanging cities",
+      "Regions every kilometre with their own themes",
+      "Deterministic: co-op peers verify chunk checksums"
+    ],
+    svgGraphic: `
+      <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="190" fill="#0b0e14"/>
+        <defs>
+          <linearGradient id="threeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#d97706" stop-opacity="0.03"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="190" fill="url(#threeGrad)"/>
+        <!-- Background Grid -->
+        <g stroke="#ffffff" stroke-opacity="0.02" stroke-width="1">
+          <path d="M0 30 H400 M0 60 H400 M0 90 H400 M0 120 H400 M0 150 H400"/>
+          <path d="M50 0 V190 M100 0 V190 M150 0 V190 M200 0 V190 M250 0 V190 M300 0 V190 M350 0 V190"/>
+        </g>
+        <!-- Isometric Grid Representation -->
+        <path d="M 200 50 L 320 110 L 200 170 L 80 110 Z" fill="#1e293b" fill-opacity="0.4" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.3"/>
+        <path d="M 200 80 L 280 120 L 200 160 L 120 120 Z" fill="#334155" fill-opacity="0.6" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.5"/>
+        <!-- Low-poly Chest shape in isometric -->
+        <path d="M 200 100 L 225 112 L 200 125 L 175 112 Z" fill="#d97706" stroke="#f59e0b" stroke-width="1.5"/>
+        <path d="M 175 112 L 200 125 L 200 145 L 175 132 Z" fill="#b45309" stroke="#f59e0b" stroke-width="1"/>
+        <path d="M 200 125 L 225 112 L 225 132 L 200 145 Z" fill="#92400e" stroke="#f59e0b" stroke-width="1"/>
+        <!-- Glowing chest emission -->
+        <ellipse cx="200" cy="120" rx="15" ry="8" fill="#fbbf24" fill-opacity="0.3" filter="blur(6px)"/>
+        <!-- Torch glow and particles representation -->
+        <g transform="translate(110, 80)">
+          <path d="M0 20 L5 0" stroke="#f59e0b" stroke-width="2.5"/>
+          <circle cx="5" cy="0" r="8" fill="#ef4444" fill-opacity="0.4" filter="blur(3px)"/>
+          <circle cx="5" cy="0" r="4" fill="#fbbf24"/>
+        </g>
+        <g transform="translate(290, 80)">
+          <path d="M0 20 L-5 0" stroke="#f59e0b" stroke-width="2.5"/>
+          <circle cx="-5" cy="0" r="8" fill="#ef4444" fill-opacity="0.4" filter="blur(3px)"/>
+          <circle cx="-5" cy="0" r="4" fill="#fbbf24"/>
+        </g>
+      </svg>
+    `
+  },
+
+  {
     id: "regression-bots",
     title: "Regression Bot Suite",
     category: "tools",
     badgeClass: "badge-tools",
     categoryLabel: "QA Tools",
-    shortDesc: "50+ headless Godot bots that play RuinBound after every change: combat, co-op, HUD, levels and bosses.",
-    fullDesc: "Our automated playtesters. Each bot boots the game headless and drives one slice of it: fighting, dashing, hacking, walking every floor layout, checking doors and props, or hosting and joining a real co-op session over the network. A Python runner launches them in parallel on any OS, and screenshot bots compare frames to catch visual regressions. We built the suite with Claude Code, and it is what lets us refactor a 3D co-op game safely.",
+    shortDesc: "60+ headless Godot bots that play RuinBound after every change: world generation, co-op sync, movement and combat.",
+    fullDesc: "Our automated playtesters. Each bot boots the game headless and drives one slice of it: generating and validating the megastructure across hundreds of seeds, walking from chunk to chunk on autopilot, flying, jumping and climbing ladders, fighting, or hosting and joining a real co-op session to compare world checksums. A Python runner launches several at once on free slots, and screenshot bots capture views for review. We built the suite with Claude Code, and it is what lets us change a procedural co-op game safely.",
     platforms: ["Godot 4", "GDScript", "Python"],
     features: [
-      "50+ focused bots (fight, dash, hack, HUD, map, boss…)",
-      "Host + client co-op bots over real networking",
-      "Screenshot bots with frame comparison",
-      "Cross-platform Python runner",
-      "Runs headless in CI-style batches",
-      "Shared bot base for writing new checks fast"
+      "60+ focused bots (world, seams, fly, jump, fight...)",
+      "Host + client co-op bots compare world checksums",
+      "Generation checked across hundreds of seeds",
+      "Autopilot walks the player chunk to chunk",
+      "Parallel runs on automatic free slots",
+      "Screenshot bots for visual review"
     ],
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,58 +112,22 @@ const ASSETS_DATA = [
 
   {
     id: "art-pipeline",
-    title: "Procedural Boss & Prop Builder",
-    category: "3d",
+    title: "Creature & Prop Pipeline",
+    category: "shaders",
     badgeClass: "badge-3d",
     categoryLabel: "Art Pipeline",
-    shortDesc: "Blender Python scripts that assemble RuinBound's bosses, enemies and deck props from reusable parts.",
-    fullDesc: "Instead of modeling every asset by hand, we describe them in code. Blender Python scripts assemble multi-part bosses like the Cargo Strider and the Breacher, enemies like the Hound and the Sentry, and kits of deck props, then bake and export them straight into Godot. Companion scripts generate floor, surface and UI textures, and the RuinBound logo itself.",
-    platforms: ["Blender Python", "Godot 4"],
+    shortDesc: "Headless Blender, Houdini and Substance scripts that sculpt our bio-weapons and build bosses and props.",
+    fullDesc: "Instead of modelling every asset by hand, we describe them in code and let Claude Code drive the tools headless. Houdini and Blender scripts sculpt bio-weapon creatures like the Ivory Seraph and the MycoReaver, part libraries assemble mechanical bosses and props, and Substance scripts bake their textures, then everything is exported straight into Godot with preview renders for review.",
+    platforms: ["Blender", "Houdini", "Substance"],
     features: [
-      "Bosses and enemies built from part libraries",
-      "Modular deck prop and sci-fi kit builders",
-      "Bake and export straight into Godot",
-      "Procedural floor, surface and UI textures",
-      "Bounds data exported for level placement",
-      "One-command rebuild scripts per asset"
+      "Bio-weapon creatures sculpted from scripts",
+      "Bosses and props assembled from part libraries",
+      "Substance bakes driven from Python",
+      "Preview renders for every revision",
+      "Export straight into Godot",
+      "One-command rebuilds per asset"
     ],
-    svgGraphic: `
-      <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="190" fill="#0b0e14"/>
-        <defs>
-          <linearGradient id="threeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#d97706" stop-opacity="0.03"/>
-          </linearGradient>
-        </defs>
-        <rect width="400" height="190" fill="url(#threeGrad)"/>
-        <!-- Background Grid -->
-        <g stroke="#ffffff" stroke-opacity="0.02" stroke-width="1">
-          <path d="M0 30 H400 M0 60 H400 M0 90 H400 M0 120 H400 M0 150 H400"/>
-          <path d="M50 0 V190 M100 0 V190 M150 0 V190 M200 0 V190 M250 0 V190 M300 0 V190 M350 0 V190"/>
-        </g>
-        <!-- Isometric Grid Representation -->
-        <path d="M 200 50 L 320 110 L 200 170 L 80 110 Z" fill="#1e293b" fill-opacity="0.4" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.3"/>
-        <path d="M 200 80 L 280 120 L 200 160 L 120 120 Z" fill="#334155" fill-opacity="0.6" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.5"/>
-        <!-- Low-poly Chest shape in isometric -->
-        <path d="M 200 100 L 225 112 L 200 125 L 175 112 Z" fill="#d97706" stroke="#f59e0b" stroke-width="1.5"/>
-        <path d="M 175 112 L 200 125 L 200 145 L 175 132 Z" fill="#b45309" stroke="#f59e0b" stroke-width="1"/>
-        <path d="M 200 125 L 225 112 L 225 132 L 200 145 Z" fill="#92400e" stroke="#f59e0b" stroke-width="1"/>
-        <!-- Glowing chest emission -->
-        <ellipse cx="200" cy="120" rx="15" ry="8" fill="#fbbf24" fill-opacity="0.3" filter="blur(6px)"/>
-        <!-- Torch glow and particles representation -->
-        <g transform="translate(110, 80)">
-          <path d="M0 20 L5 0" stroke="#f59e0b" stroke-width="2.5"/>
-          <circle cx="5" cy="0" r="8" fill="#ef4444" fill-opacity="0.4" filter="blur(3px)"/>
-          <circle cx="5" cy="0" r="4" fill="#fbbf24"/>
-        </g>
-        <g transform="translate(290, 80)">
-          <path d="M0 20 L-5 0" stroke="#f59e0b" stroke-width="2.5"/>
-          <circle cx="-5" cy="0" r="8" fill="#ef4444" fill-opacity="0.4" filter="blur(3px)"/>
-          <circle cx="-5" cy="0" r="4" fill="#fbbf24"/>
-        </g>
-      </svg>
-    `
+    svgGraphic: `<img src="img/mycoreaver.jpg" alt="MycoReaver render">`
   },
 
   {
@@ -170,62 +190,6 @@ const ASSETS_DATA = [
         <circle cx="200" cy="95" r="15" fill="#8b5cf6" filter="drop-shadow(0 0 10px rgba(139,92,246,0.8))"/>
         <!-- Stereo indicator -->
         <text x="200" y="155" fill="#f43f5e" fill-opacity="0.5" font-family="monospace" font-size="9" text-anchor="middle">KERNEL PANIC / 180 BPM</text>
-      </svg>
-    `
-  },
-
-  {
-    id: "bga",
-    title: "Audio-Reactive 3D Visuals",
-    category: "shaders",
-    badgeClass: "badge-shaders",
-    categoryLabel: "Visuals",
-    shortDesc: "A single 3D object that morphs to a synth line in real time, built with three.js and audio analysis.",
-    fullDesc: "An experiment in music-driven visuals. We split a track into harmonic and percussive parts, extract synth features at 60 fps, and map them onto one continuously morphing 3D form: low growls swell the body, formants ripple the surface, high harmonics grow glowing spikes, and synth stabs briefly freeze it into crystal. It plays live in the browser and renders to video with a headless browser.",
-    platforms: ["three.js", "librosa", "Playwright"],
-    features: [
-      "Harmonic/percussive separation to ignore drums",
-      "Synth features sampled at 60 fps",
-      "Body, ripple, spike and crystal deformations",
-      "Pitch drives wave count and color",
-      "Real-time playback in the browser",
-      "Frame-accurate video render pipeline"
-    ],
-    svgGraphic: `
-      <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="190" fill="#0b0e14"/>
-        <defs>
-          <linearGradient id="shGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
-          </linearGradient>
-          <linearGradient id="sphereGrad" x1="30%" y1="30%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#22d3ee"/>
-            <stop offset="40%" stop-color="#0891b2"/>
-            <stop offset="41%" stop-color="#0e7490"/>
-            <stop offset="80%" stop-color="#155e75"/>
-            <stop offset="81%" stop-color="#083344"/>
-          </linearGradient>
-        </defs>
-        <rect width="400" height="190" fill="url(#shGrad)"/>
-        <!-- Background Grid -->
-        <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-          <path d="M0 30 H400 M0 60 H400 M0 90 H400 M0 120 H400 M0 150 H400"/>
-          <path d="M50 0 V190 M100 0 V190 M150 0 V190 M200 0 V190 M250 0 V190 M300 0 V190 M350 0 V190"/>
-        </g>
-        <!-- Stylized Toon Water Waves -->
-        <path d="M 0 160 Q 50 140 100 160 T 200 160 T 300 160 T 400 160 L 400 190 L 0 190 Z" fill="#0891b2" fill-opacity="0.5"/>
-        <path d="M 0 170 Q 60 155 120 170 T 240 170 T 360 170 T 400 170 L 400 190 L 0 190 Z" fill="#0e7490" fill-opacity="0.8"/>
-        <!-- Cel Shaded Sphere -->
-        <circle cx="200" cy="85" r="45" fill="url(#sphereGrad)" stroke="#22d3ee" stroke-width="3" filter="drop-shadow(0 0 12px rgba(6, 182, 212, 0.4))"/>
-        <!-- Rim Light effect overlay -->
-        <path d="M 160 65 A 45 45 0 0 1 235 55 A 41 41 0 0 0 160 65" fill="#ffffff" fill-opacity="0.35"/>
-        <circle cx="180" cy="65" r="6" fill="#ffffff" fill-opacity="0.7"/>
-        <!-- Code / Math symbols representation -->
-        <text x="30" y="50" fill="#22d3ee" fill-opacity="0.4" font-family="monospace" font-size="11">body = 40-250Hz</text>
-        <text x="30" y="70" fill="#22d3ee" fill-opacity="0.4" font-family="monospace" font-size="11">edge = 1.5-6kHz</text>
-        <text x="290" y="110" fill="#22d3ee" fill-opacity="0.3" font-family="monospace" font-size="10">stab: crystal</text>
-        <text x="290" y="130" fill="#22d3ee" fill-opacity="0.3" font-family="monospace" font-size="10">pitch: hue</text>
       </svg>
     `
   }
