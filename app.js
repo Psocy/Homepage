@@ -1,4 +1,4 @@
-// Asset Store Database
+// In-house Tech
 const ASSETS_DATA = [
   {
     id: "toon-shaders",
@@ -7,8 +7,7 @@ const ASSETS_DATA = [
     badgeClass: "badge-shaders",
     categoryLabel: "Shaders",
     shortDesc: "A complete collection of high-fidelity toon shaders including dynamic stylized water, custom outline post-processing, and multi-band cel shaders for Unity URP.",
-    fullDesc: "Bring your anime or stylized game to life with Swem Stylized Toon Shaders! This package offers highly optimized, production-ready shaders designed specifically for modern mobile and console hardware. Includes customizable parameters for specular highlights, shadow bands, rim lighting, and a depth-based stylized water shader with procedural foam.",
-    price: "$29.99",
+    fullDesc: "Our stylized rendering stack, built for the look of our own games. Optimized, production-ready shaders tuned for mobile and PC hardware, with customizable specular highlights, shadow bands, rim lighting, and a depth-based stylized water shader with procedural foam.",
     platforms: ["Unity URP", "Unity HDRP"],
     features: [
       "Dynamic procedural cel shading",
@@ -16,10 +15,8 @@ const ASSETS_DATA = [
       "Stretched outline shaders (vertex extrusion & post-process)",
       "Interactive wind-blown grass and foliage shaders",
       "Optimized for mobile, PC, and consoles",
-      "Comprehensive demo scene and presets included"
+      "Demo scene and presets for fast iteration"
     ],
-    storeUrl: "https://assetstore.unity.com",
-    docsUrl: "#",
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="400" height="190" fill="#0b0e14"/>
@@ -65,9 +62,8 @@ const ASSETS_DATA = [
     badgeClass: "badge-tools",
     categoryLabel: "Editor Tools",
     shortDesc: "An advanced, node-based visual AI script editor. Easily build complex NPC decisions, state transitions, and behaviors without writing code.",
-    fullDesc: "Empower your game design with the Smart AI Behavior Tree Editor. Features an intuitive drag-and-drop workspace, visual execution debugging, customizable actions, and conditional nodes. Designed to integrate smoothly with standard movement packages (NavMesh, A* Pathfinding) out of the box.",
-    price: "$45.00",
-    platforms: ["Unity Editor", "Unreal Engine", "Godot"],
+    fullDesc: "The node-based editor our designers use to author NPC behavior. A drag-and-drop workspace with visual execution debugging, custom actions and conditional nodes, integrated with NavMesh and A* Pathfinding. It is also the foundation for our Claude-powered NPC R&D: designers define the behavior tree, and Claude handles dialogue inside those boundaries.",
+    platforms: ["Unity Editor", "C# API", "JSON export"],
     features: [
       "Infinite canvas with panning and zooming controls",
       "Live execution highlighting (watch NPC decisions in playmode)",
@@ -76,8 +72,6 @@ const ASSETS_DATA = [
       "Blackboard system for state and global variable sharing",
       "Export trees to JSON or binary scriptable assets"
     ],
-    storeUrl: "https://assetstore.unity.com",
-    docsUrl: "#",
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="400" height="190" fill="#0b0e14"/>
@@ -121,9 +115,8 @@ const ASSETS_DATA = [
     badgeClass: "badge-3d",
     categoryLabel: "3D Assets",
     shortDesc: "A complete kit of low-poly modular dungeon building blocks. Includes high-quality styled meshes, pre-configured collisions, and interactive objects.",
-    fullDesc: "Create immersive fantasy dungeons in minutes with this Retro Dungeon Modular Kit. Perfect for dark fantasy roguelikes, ARPGs, or RPGs. Features a grid-aligned system with wall tiles, arches, columns, brick steps, floor layouts, dynamic wooden chests, and pre-packaged lit torch particle systems.",
-    price: "$19.00",
-    platforms: ["OBJ / FBX", "Unity Prefabs", "Unreal Assets"],
+    fullDesc: "A grid-aligned modular kit we use to block out and build dungeon levels in minutes: wall tiles, arches, columns, steps, floor layouts, interactive chests and lit torch particle systems.",
+    platforms: ["Unity Prefabs", "FBX"],
     features: [
       "120+ unique low-poly modular models",
       "Stylized hand-painted custom texturing",
@@ -132,8 +125,6 @@ const ASSETS_DATA = [
       "Interactive components: chests, opening doors, trap triggers",
       "Fully configured collider boundaries for instant placement"
     ],
-    storeUrl: "https://assetstore.unity.com",
-    docsUrl: "#",
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="400" height="190" fill="#0b0e14"/>
@@ -179,19 +170,16 @@ const ASSETS_DATA = [
     badgeClass: "badge-audio",
     categoryLabel: "Audio Packs",
     shortDesc: "An immersive, high-quality audio asset package for futuristic games. Includes atmospheric street loops, interface chimes, neon drones, and ambient SFX.",
-    fullDesc: "Dive into a dark futuristic world with Cyberpunk City Soundscapes. This ambient SFX package offers over 80 studio-grade WAV loops and hits tailored for ambient noise, high-tech computer hacking, futuristic flying vehicles, street neon noise, and deep analog synthesizer sub-bass pads.",
-    price: "Free",
-    platforms: ["WAV 24-bit/48kHz", "Universal Unity", "Universal Unreal"],
+    fullDesc: "Our ambient audio library for futuristic settings: WAV loops and hits for city ambience, hacking interfaces, flying vehicles, neon street noise and analog synth pads, pre-wired into Unity Audio Mixers.",
+    platforms: ["WAV 24-bit/48kHz", "Unity"],
     features: [
       "80+ total sound files in high fidelity WAV format",
       "Seamless ambient loops (averaging 1-minute loop duration)",
-      "Royalty-free licensing for commercial game releases",
+      "Mixed and mastered for in-game use",
       "Pre-configured Unity Audio Mixers and Sound Cue templates",
       "Includes mechanical clicks, electronic HUD sweeps, warning buzzers",
       "Optimized file compression options for mobile platforms"
     ],
-    storeUrl: "https://assetstore.unity.com",
-    docsUrl: "#",
     svgGraphic: `
       <svg viewBox="0 0 400 190" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="400" height="190" fill="#0b0e14"/>
@@ -240,52 +228,27 @@ const ASSETS_DATA = [
   }
 ];
 
-// App States
-let currentFilter = "all";
-let searchKeyword = "";
-
 // Element Selectors
 const assetsGrid = document.getElementById("assets-grid");
-const searchInput = document.getElementById("search-input");
-const filterTabs = document.querySelectorAll(".filter-tab");
 const modalOverlay = document.getElementById("modal-overlay");
 
 // Initialize Website
 document.addEventListener("DOMContentLoaded", () => {
   renderAssets();
-  setupFilterListeners();
-  setupSearchListener();
   setupModalListeners();
 });
 
-// Render Assets Grid
+// Render Tech Grid
 function renderAssets() {
   assetsGrid.innerHTML = "";
-  
-  const filteredAssets = ASSETS_DATA.filter(asset => {
-    const matchesCategory = currentFilter === "all" || asset.category === currentFilter;
-    const matchesSearch = asset.title.toLowerCase().includes(searchKeyword.toLowerCase()) || 
-                          asset.shortDesc.toLowerCase().includes(searchKeyword.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
 
-  if (filteredAssets.length === 0) {
-    assetsGrid.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-dim);">
-        <p style="font-size: 1.1rem; margin-bottom: 8px;">검색된 에셋이 없습니다.</p>
-        <p style="font-size: 0.9rem;">다른 검색어를 입력하거나 필터를 변경해 보세요.</p>
-      </div>
-    `;
-    return;
-  }
-
-  filteredAssets.forEach((asset, index) => {
+  ASSETS_DATA.forEach((asset, index) => {
     const assetCard = document.createElement("div");
     assetCard.className = "asset-card fade-in";
     assetCard.style.animationDelay = `${index * 0.05}s`;
-    
+
     const platformsHtml = asset.platforms.map(p => `<span class="platform-tag">${p}</span>`).join("");
-    
+
     assetCard.innerHTML = `
       <div class="asset-preview">
         ${asset.svgGraphic}
@@ -294,14 +257,11 @@ function renderAssets() {
       <div class="asset-body">
         <h3 class="asset-title">${asset.title}</h3>
         <p class="asset-desc">${asset.shortDesc}</p>
-        <div class="asset-meta">
+        <div class="asset-footer">
           <div class="asset-platform">
             ${platformsHtml}
           </div>
-        </div>
-        <div class="asset-footer">
-          <div class="asset-price ${asset.price.toLowerCase() === 'free' ? 'free' : ''}">${asset.price}</div>
-          <button class="btn-card-cta" onclick="openAssetDetails('${asset.id}')">상세 보기</button>
+          <button class="btn-card-cta" onclick="openAssetDetails('${asset.id}')">Details</button>
         </div>
       </div>
     `;
@@ -309,31 +269,11 @@ function renderAssets() {
   });
 }
 
-// Setup Filters
-function setupFilterListeners() {
-  filterTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      filterTabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      currentFilter = tab.getAttribute("data-filter");
-      renderAssets();
-    });
-  });
-}
-
-// Setup Search
-function setupSearchListener() {
-  searchInput.addEventListener("input", (e) => {
-    searchKeyword = e.target.value.trim();
-    renderAssets();
-  });
-}
-
 // Setup Modal
 function setupModalListeners() {
   const closeBtn = document.getElementById("modal-close");
   closeBtn.addEventListener("click", closeModal);
-  
+
   modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) {
       closeModal();
@@ -352,40 +292,15 @@ function openAssetDetails(assetId) {
   const asset = ASSETS_DATA.find(a => a.id === assetId);
   if (!asset) return;
 
-  const modalGraphic = document.getElementById("modal-graphic");
-  const modalTitle = document.getElementById("modal-title");
-  const modalPrice = document.getElementById("modal-price");
-  const modalTags = document.getElementById("modal-tags");
-  const modalDesc = document.getElementById("modal-desc");
-  const modalFeaturesList = document.getElementById("modal-features-list");
-  const btnStore = document.getElementById("btn-store");
-  
-  // Set Graphic Header
-  modalGraphic.innerHTML = asset.svgGraphic;
-  
-  // Set Info
-  modalTitle.textContent = asset.title;
-  modalPrice.textContent = asset.price;
-  if (asset.price.toLowerCase() === 'free') {
-    modalPrice.style.color = "var(--accent-green)";
-  } else {
-    modalPrice.style.color = "white";
-  }
-
-  // Set Tags
-  modalTags.innerHTML = `
+  document.getElementById("modal-graphic").innerHTML = asset.svgGraphic;
+  document.getElementById("modal-title").textContent = asset.title;
+  document.getElementById("modal-tags").innerHTML = `
     <span class="modal-tag" style="border-color: var(--accent-primary); color: #c084fc;">${asset.categoryLabel}</span>
     ${asset.platforms.map(p => `<span class="modal-tag">${p}</span>`).join("")}
   `;
+  document.getElementById("modal-desc").textContent = asset.fullDesc;
+  document.getElementById("modal-features-list").innerHTML = asset.features.map(f => `<li>${f}</li>`).join("");
 
-  modalDesc.textContent = asset.fullDesc;
-  
-  // Set Features
-  modalFeaturesList.innerHTML = asset.features.map(f => `<li>${f}</li>`).join("");
-  
-  // Set CTA URLs
-  btnStore.href = asset.storeUrl;
-  
   // Open Overlay
   modalOverlay.classList.add("open");
   document.body.style.overflow = "hidden"; // Prevent background scroll

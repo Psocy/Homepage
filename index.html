@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swem Games - Asset Store</title>
-  <meta name="description" content="Swem Games의 고품질 게임 개발용 에셋 스토어. 스타일라이즈드 셰이더, 스마트 AI 에디터, 로우폴리 3D 모델, 몰입형 오디오 패키지를 만나보세요.">
+  <title>Swem Games - AI-native Indie Game Studio</title>
+  <meta name="description" content="Swem Games is an independent game studio building games in Unity with Claude — from gameplay code and in-house tools to NPC systems and localization.">
   <meta name="author" content="Swem Games">
+  <meta property="og:title" content="Swem Games - AI-native Indie Game Studio">
+  <meta property="og:description" content="An independent game studio building games in Unity with Claude.">
+  <meta property="og:url" content="https://siokan.com">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="style.css">
-  
+
   <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -21,9 +25,10 @@
         <div class="logo-text">Swem <span>Games</span></div>
       </a>
       <ul class="nav-links">
-        <li><a href="#catalog">에셋 목록</a></li>
-        <li><a href="#about">소개</a></li>
-        <li><a href="#support">고객 지원</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#claude">Claude</a></li>
+        <li><a href="#tech">Tech</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <a href="https://github.com/Psocy" class="social-btn" target="_blank">
         <i class="fab fa-github"></i> GitHub
@@ -33,60 +38,129 @@
 
   <!-- Hero Section -->
   <section class="hero container">
-    <span class="hero-badge">NEW RELEASE: TOON SHADER V2.0</span>
-    <h1>Premium Developer Assets for <span class="gradient">Modern Games</span></h1>
+    <span class="hero-badge">INDIE GAME STUDIO · BUILDING WITH CLAUDE</span>
+    <h1>Small team.<br><span class="gradient">AI-native game development.</span></h1>
     <p class="hero-subtitle">
-      Swem Games가 직접 게임을 개발하며 축적해 온 고품질, 고성능의 전문 게임 제작용 에셋 및 툴킷을 만나보세요.
+      Swem Games is an independent studio making games in Unity. We use Claude to write gameplay code,
+      build our own tools and run our content pipeline, so a small team can ship like a big one.
     </p>
     <div class="hero-ctas">
-      <a href="#catalog" class="btn-primary">에셋 둘러보기</a>
-      <a href="https://discord.gg" class="btn-secondary" target="_blank">
-        <i class="fab fa-discord" style="margin-right: 6px;"></i> 디스코드 커뮤니티
+      <a href="#claude" class="btn-primary">How we use Claude</a>
+      <a href="mailto:contact@siokan.com" class="btn-secondary">
+        <i class="fas fa-envelope" style="margin-right: 6px;"></i> Contact us
       </a>
     </div>
   </section>
 
-  <!-- Statistics Section -->
+  <!-- Focus Strip -->
   <section class="stats container">
     <div class="stats-grid">
       <div class="stat-item">
-        <h3>50,000+</h3>
-        <p>전체 다운로드 수</p>
+        <h3>Unity</h3>
+        <p>Engine</p>
       </div>
       <div class="stat-item">
-        <h3>4.8 / 5.0</h3>
-        <p>평균 평점</p>
+        <h3>Mobile &amp; PC</h3>
+        <p>Target platforms</p>
       </div>
       <div class="stat-item">
-        <h3>100%</h3>
-        <p>상업적 이용 가능</p>
+        <h3>Claude</h3>
+        <p>API &middot; Claude Code</p>
       </div>
     </div>
   </section>
 
-  <!-- Asset Store Catalog Section -->
-  <section class="catalog-section container" id="catalog">
-    <div class="filter-bar">
-      <div class="filter-tabs">
-        <button class="filter-tab active" data-filter="all">전체 에셋</button>
-        <button class="filter-tab" data-filter="shaders">셰이더</button>
-        <button class="filter-tab" data-filter="tools">에디터 툴</button>
-        <button class="filter-tab" data-filter="3d">3D 모델</button>
-        <button class="filter-tab" data-filter="audio">오디오</button>
+  <!-- Studio Section -->
+  <section class="section container" id="studio">
+    <div class="section-head">
+      <span class="section-eyebrow">The studio</span>
+      <h2>We make games, and the tools to make them faster</h2>
+    </div>
+    <div class="studio-grid">
+      <div class="studio-text">
+        <p>
+          Game development is full of repetitive work: wiring up systems, writing variations of the same content,
+          testing builds on every device. We think a small team should spend its time on design and feel instead.
+        </p>
+        <p>
+          So we build our games with an AI-native workflow. Claude is part of how we write code, design NPC behavior,
+          produce content and automate our pipeline. Every shader, editor tool and asset kit below started as something
+          we needed for our own projects.
+        </p>
       </div>
-      <div class="search-wrapper">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="search-input" class="search-input" placeholder="에셋 검색...">
+      <ol class="roadmap">
+        <li class="done">
+          <span class="roadmap-step">01</span>
+          <div>
+            <h4>In-house tech</h4>
+            <p>Toon shaders, a behavior tree editor, modular level kits and audio built for our own games.</p>
+          </div>
+        </li>
+        <li class="active">
+          <span class="roadmap-step">02</span>
+          <div>
+            <h4>First title in development</h4>
+            <p>A stylized Unity game for mobile and PC, built on our own toolset.</p>
+          </div>
+        </li>
+        <li>
+          <span class="roadmap-step">03</span>
+          <div>
+            <h4>Claude-powered NPCs</h4>
+            <p>Characters that hold real conversations while staying inside designer-authored behavior.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Claude Section -->
+  <section class="section container" id="claude">
+    <div class="section-head">
+      <span class="section-eyebrow">Building with Claude</span>
+      <h2>Where Claude fits in our pipeline</h2>
+      <p>We use the Claude API inside our games and tools, and Claude Code across our codebase.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="color: var(--accent-primary);"><i class="fas fa-code"></i></div>
+        <h3>Gameplay &amp; engine code</h3>
+        <p>Claude Code helps us write, refactor and review C# gameplay systems and Unity editor tooling, so a small team can maintain a large codebase.</p>
+        <span class="status-tag in-use">In use</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: var(--accent-secondary);"><i class="fas fa-comments"></i></div>
+        <h3>Smarter NPCs</h3>
+        <p>We are prototyping NPC dialogue and decision-making with the Claude API, layered on top of our behavior tree editor so designers stay in control.</p>
+        <span class="status-tag rnd">R&amp;D</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: var(--accent-cyan);"><i class="fas fa-language"></i></div>
+        <h3>Content &amp; localization</h3>
+        <p>Quest text, item descriptions and Korean&ndash;English localization are drafted with Claude and polished by our team.</p>
+        <span class="status-tag in-use">In use</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: var(--accent-amber);"><i class="fas fa-gears"></i></div>
+        <h3>Tools &amp; automation</h3>
+        <p>Build scripts, asset validation and QA checklists are automated with Claude, freeing up time for design.</p>
+        <span class="status-tag in-use">In use</span>
       </div>
     </div>
+  </section>
 
-    <!-- Dynamic Asset Grid -->
+  <!-- In-house Tech Section -->
+  <section class="section container" id="tech">
+    <div class="section-head">
+      <span class="section-eyebrow">In-house tech</span>
+      <h2>Tools we built while making our games</h2>
+    </div>
     <div class="assets-grid" id="assets-grid">
       <!-- Generated dynamically by app.js -->
     </div>
   </section>
 
-  <!-- Asset Details Modal -->
+  <!-- Tech Details Modal -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal-container">
       <button class="modal-close" id="modal-close">
@@ -98,32 +172,42 @@
       </div>
       <div class="modal-content">
         <div class="modal-title-row">
-          <h2 id="modal-title">Asset Title</h2>
-          <div class="modal-price-tag" id="modal-price">$0.00</div>
+          <h2 id="modal-title">Title</h2>
         </div>
         <div class="modal-tags" id="modal-tags">
           <!-- Tags injected by JS -->
         </div>
-        <p class="modal-desc" id="modal-desc">
-          에셋 상세 설명이 들어갈 자리입니다.
-        </p>
+        <p class="modal-desc" id="modal-desc"></p>
         <div class="modal-features">
-          <h4>핵심 특징 (Key Features)</h4>
+          <h4>Key Features</h4>
           <ul class="features-list" id="modal-features-list">
             <!-- Features injected by JS -->
           </ul>
         </div>
         <div class="modal-actions">
-          <a id="btn-store" href="#" class="btn-primary" target="_blank">
-            <i class="fas fa-external-link-alt" style="margin-right: 6px;"></i> 에셋스토어에서 확인하기
-          </a>
-          <button onclick="closeModal()" class="btn-secondary">닫기</button>
+          <button onclick="closeModal()" class="btn-secondary">Close</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- About & Contact Footer -->
+  <!-- Contact Section -->
+  <section class="section container" id="contact">
+    <div class="contact-card">
+      <h2>Let's talk</h2>
+      <p>Partnerships, publishing, or just curious about how we build with Claude? We'd love to hear from you.</p>
+      <div class="hero-ctas">
+        <a href="mailto:contact@siokan.com" class="btn-primary">
+          <i class="fas fa-envelope" style="margin-right: 6px;"></i> contact@siokan.com
+        </a>
+        <a href="https://github.com/Psocy" class="btn-secondary" target="_blank">
+          <i class="fab fa-github" style="margin-right: 6px;"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer-info" id="about">
     <div class="container footer-grid">
       <div class="footer-col">
@@ -132,23 +216,23 @@
           Swem Games
         </h4>
         <p style="margin-top: 15px; max-width: 400px;">
-          Swem Games는 단순하고 반복적인 게임 제작 과정을 개선하여 크리에이터들이 창의성에 집중할 수 있는 툴과 비주얼 에셋을 제작합니다. 모든 에셋은 실제 상업 프로젝트와 모바일 빌드 환경에서의 최적화 테스트를 통과했습니다.
+          An independent game studio building games in Unity with an AI-native workflow powered by Claude.
         </p>
       </div>
-      <div class="footer-col" id="support">
-        <h4>리소스 & 도움말</h4>
+      <div class="footer-col">
+        <h4>Studio</h4>
         <ul class="footer-links">
-          <li><a href="#"><i class="fas fa-book" style="margin-right: 6px;"></i> 가이드 문서</a></li>
-          <li><a href="https://github.com/Psocy/Homepage/issues"><i class="fas fa-bug" style="margin-right: 6px;"></i> 이슈 제보</a></li>
-          <li><a href="#"><i class="fas fa-envelope" style="margin-right: 6px;"></i> 비즈니스 문의</a></li>
+          <li><a href="#studio">About</a></li>
+          <li><a href="#claude">Building with Claude</a></li>
+          <li><a href="#tech">In-house tech</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>커뮤니티</h4>
+        <h4>Contact</h4>
         <ul class="footer-links">
-          <li><a href="https://discord.gg" target="_blank"><i class="fab fa-discord" style="margin-right: 6px;"></i> Discord 서버</a></li>
-          <li><a href="https://github.com/Psocy" target="_blank"><i class="fab fa-github" style="margin-right: 6px;"></i> GitHub 프로필</a></li>
-          <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter" style="margin-right: 6px;"></i> Twitter (X)</a></li>
+          <li><a href="mailto:contact@siokan.com"><i class="fas fa-envelope" style="margin-right: 6px;"></i> contact@siokan.com</a></li>
+          <li><a href="https://github.com/Psocy" target="_blank"><i class="fab fa-github" style="margin-right: 6px;"></i> GitHub</a></li>
+          <li><a href="https://github.com/Psocy/Homepage/issues" target="_blank"><i class="fas fa-bug" style="margin-right: 6px;"></i> Report an issue</a></li>
         </ul>
       </div>
     </div>
