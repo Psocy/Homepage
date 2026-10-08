@@ -12,7 +12,7 @@
   <meta property="og:image" content="https://siokan.com/img/ruinbound-key.jpg">
   <meta property="og:type" content="website">
   <link rel="icon" href="img/ruinbound-icon.png">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 
   <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -62,7 +62,7 @@
         <p>Engine</p>
       </div>
       <div class="stat-item">
-        <h3>50+</h3>
+        <h3>60+</h3>
         <p>Automated playtest bots</p>
       </div>
       <div class="stat-item">
@@ -85,22 +85,38 @@
         <div class="studio-grid">
           <div class="studio-text">
             <p>
-              Team up with friends and head into a megastructure that never ends. Its halls, chambers and machinery are
-              generated as you go, so every direction leads somewhere no one has been. Hack the machines that guard it,
-              salvage what you find, and see how far your crew can survive.
+              Step off the balcony and the structure just keeps going. RuinBound's world is a megastructure with no edge:
+              corridors, shafts and halls generated chunk by chunk from a seed as you walk, thirteen levels deep,
+              cut by canyons kilometres long and spanned by bridges.
+            </p>
+            <p>
+              Every kilometre the region changes, from the core to industrial sectors, archives, ruins and the abyss, and
+              with it the interiors: hangars, factories, data vaults, reactors and habitation blocks. Between them rise
+              megashafts, hanging cities, sinkholes and pillar halls you can see from three kilometres away.
             </p>
             <span class="status-tag rnd">In development</span>
           </div>
           <ul class="game-facts">
-            <li><i class="fas fa-users"></i> Online co-op: host or join a crew</li>
-            <li><i class="fas fa-infinity"></i> Endless, procedurally generated world</li>
-            <li><i class="fas fa-robot"></i> Hulking mechanical bosses</li>
-            <li><i class="fas fa-terminal"></i> Hacking, salvage and loot</li>
-            <li><i class="fas fa-gamepad"></i> Gamepad and keyboard &amp; mouse</li>
+            <li><i class="fas fa-infinity"></i> Endless world, generated as you explore</li>
+            <li><i class="fas fa-layer-group"></i> 13 stacked levels joined by shafts and ladders</li>
+            <li><i class="fas fa-route"></i> Every chunk verified walkable before you reach it</li>
+            <li><i class="fas fa-users"></i> Online co-op: the whole crew walks the same world</li>
+            <li><i class="fas fa-skull"></i> Bio-weapon creatures stalking the structure</li>
             <li><i class="fas fa-language"></i> English and Korean</li>
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="creature-head">
+      <h3>What lives in the structure</h3>
+      <p>Bio-weapons sculpted for RuinBound in Blender and Houdini.</p>
+    </div>
+    <div class="creature-grid">
+      <figure><img src="img/ivory-seraph.jpg" alt="Ivory Seraph" loading="lazy" width="640" height="640"><figcaption>Ivory Seraph</figcaption></figure>
+      <figure><img src="img/mycoreaver.jpg" alt="MycoReaver" loading="lazy" width="640" height="640"><figcaption>MycoReaver</figcaption></figure>
+      <figure><img src="img/choirmaw.jpg" alt="ChoirMaw" loading="lazy" width="640" height="640"><figcaption>ChoirMaw</figcaption></figure>
+      <figure><img src="img/ossuary-reaper.jpg" alt="Ossuary Reaper" loading="lazy" width="640" height="640"><figcaption>Ossuary Reaper</figcaption></figure>
     </div>
   </section>
 
@@ -109,23 +125,23 @@
     <div class="section-head">
       <span class="section-eyebrow">Building with Claude</span>
       <h2>How Claude Code fits into our studio</h2>
-      <p>We're a very small team. Claude Code is how we keep up with the scope of a 3D co-op game with an endless procedural world.</p>
+      <p>We're a very small team. Claude Code is how we keep up with the scope of a 3D co-op game set in an endless procedural world.</p>
     </div>
     <div class="feature-grid">
       <div class="feature-card">
         <div class="feature-icon" style="color: var(--accent-primary);"><i class="fas fa-code"></i></div>
         <h3>Gameplay code &amp; refactors</h3>
-        <p>Claude Code works across our GDScript codebase: enemy systems, co-op networking, procedural world generation, and large multi-commit refactors such as sharing IK and gait logic across every enemy.</p>
+        <p>Claude Code works across our GDScript codebase: the chunk generator, its pathfinding validator, deterministic co-op world sync, enemy systems, and large multi-commit refactors.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon" style="color: var(--accent-green);"><i class="fas fa-vial-circle-check"></i></div>
         <h3>Automated playtesting</h3>
-        <p>Together we built 50+ headless regression bots that fight, dash, hack, host and join co-op sessions, check the HUD and walk every level layout, plus screenshot bots that catch visual regressions.</p>
+        <p>Together we built 60+ headless bots: they generate and verify the world across hundreds of seeds, walk it chunk to chunk on autopilot, compare co-op checksums between host and guest, and fight, fly and climb.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon" style="color: var(--accent-amber);"><i class="fas fa-cubes"></i></div>
         <h3>Procedural art pipeline</h3>
-        <p>Blender Python scripts build our bosses, enemies and structure props from parts, and generator scripts produce floor, surface and UI textures, including the RuinBound logo.</p>
+        <p>Claude Code drives Blender, Houdini and Substance headless: sculpting our bio-weapon creatures, building bosses and props from parts, and baking textures, including the RuinBound logo.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon" style="color: var(--accent-rose);"><i class="fas fa-music"></i></div>
@@ -227,6 +243,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
